@@ -33,14 +33,15 @@ def get_best():
                 bestModel = model
     return bestP, bestQ, bestModel
 
-p, d, q = 4, 2, 12
-_p, _d, _q, s = 1, 1, 1, 20
+p, d, q = 2, 1, 3
+_p, _d, _q, s = 0, 0, 1, 20
 model = sm.tsa.statespace.SARIMAX(ts,
                                   order=(p, d, q),
                                   seasonal_order=(_p, _d, _q, s),
                                   enforce_stationarity=False,
                                   enforce_invertibility=False)
 result = model.fit()
+print(result.aic)
 
 # p, q, model = get_best()
 # result = model.fit()
